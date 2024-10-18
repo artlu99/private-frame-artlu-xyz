@@ -1,6 +1,6 @@
 /** @jsxImportSource frog/jsx */
 
-import { FROG_FRAME_TITLE, GITHUB_URL } from "@/app/lib/constants";
+import { FROG_FRAME_TITLE, GITHUB_URL } from "@/app/constants";
 import {
   basicPage,
   maybeLinkButton,

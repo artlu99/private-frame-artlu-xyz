@@ -1,10 +1,8 @@
+import { ANCHOR_CAST_URL } from "@/app/constants";
 import { getFrameMetadata } from "frog/next";
 import type { Metadata } from "next";
 import Image from "next/image";
-
 import styles from "./page.module.css";
-
-const castUrl = "https://warpcast.com/artlu/0x8e491f5a";
 
 export async function generateMetadata(): Promise<Metadata> {
   const frameTags = await getFrameMetadata(
@@ -37,7 +35,7 @@ export default function Home() {
           <p>
             Interact with this frame at&nbsp;
             <a
-              href={castUrl}
+              href={ANCHOR_CAST_URL}
               style={{ display: "inline", fontWeight: "semibold" }}
             >
               <code className={styles.code}>this</code>

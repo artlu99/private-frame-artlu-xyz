@@ -1,5 +1,6 @@
 /** @jsxImportSource frog/jsx */
 
+import { SLIDESHOW_NAME } from "@/app/constants";
 import { getNumber, getSlides } from "@/app/lib/storage";
 import { Box, Heading, Spacer, Text, VStack } from "@/app/lib/ui";
 import { Button } from "frog";
@@ -14,7 +15,7 @@ export interface Slides {
 }
 
 export const maybeLinkButton = async (pageNumber: number) => {
-  const contents = await getSlides("artlu20240704");
+  const contents = await getSlides(SLIDESHOW_NAME);
   return contents.slides[pageNumber - 1].url ? (
     <Button.Link href={contents.slides[pageNumber - 1].url ?? ""}>
       {contents.slides[pageNumber - 1].buttonText ?? "Detail"}
@@ -41,7 +42,7 @@ export const unauthorizedSlideshowPage = () =>
 
 export const slide = async (pageNumber: number) => {
   const numSlideshowPages = await getNumber("nSlideshowPages");
-  const contents = await getSlides("artlu20240704");
+  const contents = await getSlides(SLIDESHOW_NAME);
 
   return (
     <Box grow alignVertical="center" backgroundColor="background" padding="32">

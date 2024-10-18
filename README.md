@@ -1,6 +1,6 @@
 # REPO
 
-This is a vanilla Next14 App Router + React18 web app, ready to deploy to Vercel in a handful of clicks.
+This is a vanilla Next14 App Router + React18 app serving a simple Frog.fm frame, ready to deploy to Vercel in a handful of clicks.
 
 The UX works fine for me, and data is stored in Vercel's experimental `Edge Config Store`, which is so low-impact that it might as well be free forever. If you need more scale, portability, or ease of use, consider:
 
@@ -22,7 +22,7 @@ Head to <http://localhost:3000/api>
 
 ## Deploy to Vercal
 
-Update `app/lib/constants.ts` with your own title and Github URL.
+Update `app/constants.ts` with your own title and Github URL.
 
 Commit to Github, create a new project in Vercel and link it to the repo, click and deploy.
 
