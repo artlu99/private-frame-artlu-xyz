@@ -25,6 +25,7 @@ import { serveStatic } from "frog/serve-static";
 const app = new Frog({
   assetsPath: "/",
   basePath: "/api",
+  browserLocation: "/",
   hub: pinata(),
   title: FROG_FRAME_TITLE,
   ui: { vars },
