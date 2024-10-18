@@ -1,4 +1,4 @@
-import { ANCHOR_CAST_URL } from "@/app/constants";
+import { ANCHOR_CAST_URL, GITHUB_URL } from "@/app/constants";
 import { getFrameMetadata } from "frog/next";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -30,7 +30,7 @@ export default function Home() {
             >
               <code className={styles.code}>localhost:3000/api</code>
             </a>{" "}
-            for your frame endpoint.
+            for your frame endpoint
           </p>
           <p>
             Interact with this frame at&nbsp;
@@ -40,7 +40,17 @@ export default function Home() {
             >
               <code className={styles.code}>this</code>
             </a>
-            &nbsp;cast
+            &nbsp;anchor cast
+          </p>
+          <p>
+            Clone / fork this FOSS&nbsp;
+            <a
+              href={GITHUB_URL}
+              style={{ display: "inline", fontWeight: "semibold" }}
+            >
+              <code className={styles.code}>repo</code>
+            </a>
+            &nbsp;under MIT license
           </p>
         </div>
         <div>
