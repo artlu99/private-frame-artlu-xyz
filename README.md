@@ -26,7 +26,7 @@ Update `app/constants.ts` with your own title and Github URL.
 
 Commit to Github, create a new project in Vercel and link it to the repo, click and deploy.
 
-After first  deployment, you must connect a Vercel `Edge Config Store` database to this project and re-deploy. Easiest way is via the Dashboard, and it can also be done via the CLI.
+After first  deployment, you must connect a Vercel `Edge Config Store` database to this project and re-deploy. Easiest way is via the Dashboard, and it can also be done via the CLI. Read up about the `vercel link` and `vercel env pull .env.development.local` commands.
 
 Sample format:
 
