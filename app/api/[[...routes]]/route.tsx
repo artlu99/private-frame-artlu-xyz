@@ -87,14 +87,8 @@ app
           allowedToSeeSlideshow ? "click Next to begin slideshow" : undefined
         ),
         intents: allowedToSeeSlideshow
-          ? [
-              <Button.Reset>Reset</Button.Reset>,
-              <Button value="1">Next</Button>,
-            ]
-          : [
-              <Button.Link href={GITHUB_URL}>GitHub</Button.Link>,
-              <Button.Reset>Reset</Button.Reset>,
-            ],
+          ? [<Button value="1">Next</Button>]
+          : [<Button.Link href={GITHUB_URL}>GitHub</Button.Link>],
       });
     } else {
       return c.res({ image: unauthorizedPage() });
@@ -110,10 +104,7 @@ app
       );
 
       if (!allowedToSeeSlideshow) {
-        return c.res({
-          image: unauthorizedSlideshowPage(),
-          intents: [<Button.Reset>Reset</Button.Reset>],
-        });
+        return c.res({ image: unauthorizedSlideshowPage() });
       }
 
       const numSlideshowPages = await getNumber("nSlideshowPages");
@@ -147,7 +138,7 @@ app
                 maybeButton,
                 <Button value={"1"}>Start Over</Button>,
               ]
-            : [<Button.Reset>Reset</Button.Reset>],
+            : [],
       });
     } else {
       return c.res({ image: unauthorizedPage() });
