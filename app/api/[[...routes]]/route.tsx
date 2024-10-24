@@ -21,11 +21,11 @@ import { pinata } from "frog/hubs";
 import { neynar } from "frog/middlewares";
 import { handle } from "frog/next";
 import { serveStatic } from "frog/serve-static";
+import { html } from "hono/html";
 
 const app = new Frog({
   assetsPath: "/",
   basePath: "/api",
-  browserLocation: "/",
   hub: pinata(),
   title: FROG_FRAME_TITLE,
   ui: { vars },
@@ -38,7 +38,8 @@ app
       features: ["interactor", "cast"],
     })
   )
-  .frame("/", async (c) => {
+  .frame("/old-landing-page", async (c) => {
+    // reimplemented below in pure html in order to handle redirects better
     const greeting = await getString("greeting");
 
     return c.res({
@@ -151,6 +152,39 @@ app
     } else {
       return c.res({ image: unauthorizedPage() });
     }
+  })
+  .get("/", async (c) => {
+    const greeting = await getString("greeting");
+
+    const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+    return c.html(
+      html`<!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta property="fc:frame" content="vNext" />
+            <meta property="fc:frame:image:aspect_ratio" content="1.91:1" />
+            <meta
+              property="fc:frame:image"
+              content="https://${baseUrl}/greeting.png"
+            />
+            <meta
+              property="og:image"
+              content="https://${baseUrl}/greeting.png"
+            />
+            <meta property="og:title" content="${greeting}" />
+            <meta
+              property="fc:frame:post_url"
+              content="https://${baseUrl}/api/reveal?initialPath=%252Fapi&amp;previousButtonValues=%2523A_"
+            />
+            <meta property="fc:frame:button:1" content="Gib Secret" />
+            <meta property="fc:frame:button:1:action" content="post" />
+            <meta property="frog:version" content="0.17.4" />
+            <meta http-equiv="refresh" content="0; URL=https://${baseUrl}" />
+          </head>
+          <body></body>
+        </html> `
+    );
   });
 
 devtools(app, { serveStatic });
